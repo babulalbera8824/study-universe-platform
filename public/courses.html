@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Study Universe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .courses-page {
+            padding-top: 20px;
+        }
+        
+        .filter-section {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .search-bar {
+            flex: 2;
+            min-width: 250px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .courses-count {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Study Universe</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/videos">Videos</a></li>
+                <li><a href="/pdfs">Books & PDFs</a></li>
+                <li><a href="/courses" class="active">Courses</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#" class="search-icon"><i class="fas fa-search"></i></a></li>
+            </ul>
+
+            <div class="nav-auth">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Sign Up</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container courses-page">
+        <div class="section-header" style="margin-top: 30px; margin-bottom: 40px;">
+            <h1 style="margin-bottom: 10px;">Featured Courses</h1>
+            <p>Learn comprehensive subjects with structured courses</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search courses..." onkeyup="filterCourses()">
+                </div>
+                <div class="filter-group">
+                    <label for="subjectFilter">Subject</label>
+                    <select id="subjectFilter" onchange="filterCourses()">
+                        <option value="">All Subjects</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="levelFilter">Level</label>
+                    <select id="levelFilter" onchange="filterCourses()">
+                        <option value="">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="courses-count">
+            Showing <span id="courseCount">0</span> courses
+        </div>
+
+        <!-- Courses Grid -->
+        <div id="coursesGrid" class="courses-grid">
+            <!-- Courses will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Universe</h3>
+                    <p>Making quality education accessible to everyone</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/videos">Videos</a></li>
+                        <li><a href="/pdfs">Books & PDFs</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Study Universe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Sample course data
+        const courses = [
+            {
+                id: 1,
+                title: 'Mathematics Mastery',
+                subject: 'mathematics',
+                level: 'beginner',
+                banner: 'https://via.placeholder.com/400x200?text=Math+Mastery',
+                videos: 24,
+                hours: 16,
+                description: 'Complete mathematics course from basics to advanced',
+                students: 3500,
+                rating: 4.8
+            },
+            {
+                id: 2,
+                title: 'Physics Expert Course',
+                subject: 'physics',
+                level: 'intermediate',
+                banner: 'https://via.placeholder.com/400x200?text=Physics+Expert',
+                videos: 32,
+                hours: 24,
+                description: 'Master physics concepts with real-world applications',
+                students: 2800,
+                rating: 4.9
+            },
+            {
+                id: 3,
+                title: 'Chemistry Professional',
+                subject: 'chemistry',
+                level: 'advanced',
+                banner: 'https://via.placeholder.com/400x200?text=Chemistry+Pro',
+                videos: 28,
+                hours: 20,
+                description: 'Advanced chemistry topics for competitive exams',
+                students: 2200,
+                rating: 4.7
+            },
+            {
+                id: 4,
+                title: 'Biology Fundamentals',
+                subject: 'biology',
+                level: 'beginner',
+                banner: 'https://via.placeholder.com/400x200?text=Biology+Basics',
+                videos: 20,
+                hours: 14,
+                description: 'Essential biology concepts for all learners',
+                students: 3100,
+                rating: 4.8
+            },
+            {
+                id: 5,
+                title: 'Advanced Physics',
+                subject: 'physics',
+                level: 'advanced',
+                banner: 'https://via.placeholder.com/400x200?text=Advanced+Physics',
+                videos: 36,
+                hours: 28,
+                description: 'Deep dive into advanced physics topics',
+                students: 1800,
+                rating: 4.9
+            },
+            {
+                id: 6,
+                title: 'Chemistry Basics',
+                subject: 'chemistry',
+                level: 'beginner',
+                banner: 'https://via.placeholder.com/400x200?text=Chemistry+Basics',
+                videos: 22,
+                hours: 15,
+                description: 'Introduction to chemistry principles',
+                students: 2900,
+                rating: 4.6
+            }
+        ];
+
+        function getLevelBadgeClass(level) {
+            if (level === 'intermediate') return 'intermediate';
+            if (level === 'advanced') return 'advanced';
+            return '';
+        }
+
+        function renderCourses(coursesToShow) {
+            const grid = document.getElementById('coursesGrid');
+            const count = document.getElementById('courseCount');
+            
+            count.textContent = coursesToShow.length;
+            
+            if (coursesToShow.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--secondary-color);">No courses found. Try adjusting your filters.</p>';
+                return;
+            }
+            
+            grid.innerHTML = coursesToShow.map(course => `
+                <div class="course-card animate-on-scroll">
+                    <div class="course-banner">
+                        <img src="${course.banner}" alt="${course.title}">
+                        <span class="badge ${getLevelBadgeClass(course.level)}">${course.level.charAt(0).toUpperCase() + course.level.slice(1)}</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>${course.title}</h3>
+                        <p class="course-desc">${course.description}</p>
+                        <div class="course-stats">
+                            <span><i class="fas fa-film"></i> ${course.videos} Videos</span>
+                            <span><i class="fas fa-clock"></i> ${course.hours} Hours</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--secondary-color); margin-bottom: 15px;">
+                            <i class="fas fa-users"></i> ${course.students} Students • 
+                            <i class="fas fa-star"></i> ${course.rating}/5
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="alert('Enrollment feature coming soon!')">Enroll Now</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCourses() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const subject = document.getElementById('subjectFilter').value;
+            const level = document.getElementById('levelFilter').value;
+
+            const filtered = courses.filter(course => {
+                const matchesSearch = course.title.toLowerCase().includes(searchTerm) || 
+                                    course.description.toLowerCase().includes(searchTerm);
+                const matchesSubject = !subject || course.subject === subject;
+                const matchesLevel = !level || course.level === level;
+                
+                return matchesSearch && matchesSubject && matchesLevel;
+            });
+
+            renderCourses(filtered);
+        }
+
+        // Initial render
+        renderCourses(courses);
+    </script>
+</body>
+</html>
