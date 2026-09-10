@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Universe - Modern Educational Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Study Universe</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/videos">Videos</a></li>
+                <li><a href="/pdfs">Books & PDFs</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#" class="search-icon"><i class="fas fa-search"></i></a></li>
+            </ul>
+
+            <div class="nav-auth">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Sign Up</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">Make Your Dreams Reality</h1>
+            <p class="hero-subtitle animate-fade-in-delay">Transform your learning with video lectures, PDF books, and structured courses</p>
+            <div class="hero-buttons animate-fade-in-delay-2">
+                <button class="btn btn-primary" onclick="scrollToSection('featured')">Start Learning</button>
+                <button class="btn btn-secondary" onclick="window.location.href='/courses'">Explore Courses</button>
+            </div>
+        </div>
+        <div class="hero-illustration">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#007BFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0056B3;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <!-- Book Illustration -->
+                <rect x="80" y="120" width="120" height="160" fill="url(#grad1)" rx="10"/>
+                <rect x="90" y="130" width="100" height="140" fill="#F0F4FF" rx="5"/>
+                <line x1="140" y1="130" x2="140" y2="270" stroke="#007BFF" stroke-width="2"/>
+                <!-- Pages -->
+                <rect x="95" y="145" width="40" height="8" fill="#E0E7FF" rx="2"/>
+                <rect x="95" y="165" width="40" height="8" fill="#E0E7FF" rx="2"/>
+                <rect x="95" y="185" width="40" height="8" fill="#E0E7FF" rx="2"/>
+                <!-- Checkmark -->
+                <circle cx="300" cy="150" r="40" fill="#28A745" opacity="0.9"/>
+                <path d="M 285 150 L 295 160 L 315 140" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Featured Topics Section -->
+    <section class="section featured" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Subjects</h2>
+                <p>Start learning from trending topics</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Mathematics</h3>
+                    <p>Algebra, Geometry, Calculus</p>
+                </div>
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-atom"></i></div>
+                    <h3>Physics</h3>
+                    <p>Mechanics, Thermodynamics</p>
+                </div>
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Chemistry</h3>
+                    <p>Organic, Inorganic, Physical</p>
+                </div>
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-dna"></i></div>
+                    <h3>Biology</h3>
+                    <p>Botany, Zoology, Genetics</p>
+                </div>
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-globe"></i></div>
+                    <h3>History</h3>
+                    <p>Ancient, Medieval, Modern</p>
+                </div>
+                <div class="topic-card animate-on-scroll">
+                    <div class="topic-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Geography</h3>
+                    <p>Physical, Political, Economic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Videos Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Video Lectures</h2>
+                <a href="/videos" class="view-all">View All →</a>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card animate-on-scroll">
+                    <div class="video-thumbnail">
+                        <img src="https://via.placeholder.com/300x170?text=Mathematics+Basics" alt="Video">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <span class="duration">45:32</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Introduction to Algebra</h3>
+                        <p class="category">Mathematics</p>
+                        <p class="description">Learn the fundamentals of algebra with practical examples</p>
+                        <div class="card-footer">
+                            <span class="views"><i class="fas fa-eye"></i> 1.2K views</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card animate-on-scroll">
+                    <div class="video-thumbnail">
+                        <img src="https://via.placeholder.com/300x170?text=Physics+Concepts" alt="Video">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <span class="duration">52:15</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Newton's Laws of Motion</h3>
+                        <p class="category">Physics</p>
+                        <p class="description">Deep dive into classical mechanics principles</p>
+                        <div class="card-footer">
+                            <span class="views"><i class="fas fa-eye"></i> 2.1K views</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card animate-on-scroll">
+                    <div class="video-thumbnail">
+                        <img src="https://via.placeholder.com/300x170?text=Chemistry+Reaction" alt="Video">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <span class="duration">38:47</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Chemical Bonding Explained</h3>
+                        <p class="category">Chemistry</p>
+                        <p class="description">Understand ionic and covalent bonds</p>
+                        <div class="card-footer">
+                            <span class="views"><i class="fas fa-eye"></i> 1.8K views</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card animate-on-scroll">
+                    <div class="video-thumbnail">
+                        <img src="https://via.placeholder.com/300x170?text=Biology+Cell" alt="Video">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <span class="duration">41:22</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Cell Biology Fundamentals</h3>
+                        <p class="category">Biology</p>
+                        <p class="description">Structure and function of plant and animal cells</p>
+                        <div class="card-footer">
+                            <span class="views"><i class="fas fa-eye"></i> 2.5K views</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Books Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Books & PDFs</h2>
+                <a href="/pdfs" class="view-all">View All →</a>
+            </div>
+            <div class="books-grid">
+                <div class="book-card animate-on-scroll">
+                    <div class="book-cover">
+                        <img src="https://via.placeholder.com/220x320?text=Math+Guide" alt="Book">
+                    </div>
+                    <h3>Complete Math Guide</h3>
+                    <p class="subject">Mathematics</p>
+                    <p class="size">📄 2.5 MB</p>
+                    <div class="book-actions">
+                        <button class="btn btn-sm btn-primary">Read</button>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+
+                <div class="book-card animate-on-scroll">
+                    <div class="book-cover">
+                        <img src="https://via.placeholder.com/220x320?text=Physics+Notes" alt="Book">
+                    </div>
+                    <h3>Physics Comprehensive Notes</h3>
+                    <p class="subject">Physics</p>
+                    <p class="size">📄 3.8 MB</p>
+                    <div class="book-actions">
+                        <button class="btn btn-sm btn-primary">Read</button>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+
+                <div class="book-card animate-on-scroll">
+                    <div class="book-cover">
+                        <img src="https://via.placeholder.com/220x320?text=Chemistry+Theory" alt="Book">
+                    </div>
+                    <h3>Chemistry Theory & Practice</h3>
+                    <p class="subject">Chemistry</p>
+                    <p class="size">📄 4.2 MB</p>
+                    <div class="book-actions">
+                        <button class="btn btn-sm btn-primary">Read</button>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+
+                <div class="book-card animate-on-scroll">
+                    <div class="book-cover">
+                        <img src="https://via.placeholder.com/220x320?text=Biology+Textbook" alt="Book">
+                    </div>
+                    <h3>Biology Essential Textbook</h3>
+                    <p class="subject">Biology</p>
+                    <p class="size">📄 5.1 MB</p>
+                    <div class="book-actions">
+                        <button class="btn btn-sm btn-primary">Read</button>
+                        <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Courses</h2>
+                <a href="/courses" class="view-all">View All →</a>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card animate-on-scroll">
+                    <div class="course-banner">
+                        <img src="https://via.placeholder.com/400x200?text=Math+Mastery" alt="Course">
+                        <span class="badge">Beginner</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>Mathematics Mastery</h3>
+                        <p class="course-desc">Complete mathematics course from basics to advanced</p>
+                        <div class="course-stats">
+                            <span><i class="fas fa-film"></i> 24 Videos</span>
+                            <span><i class="fas fa-clock"></i> 16 Hours</span>
+                        </div>
+                        <button class="btn btn-primary btn-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card animate-on-scroll">
+                    <div class="course-banner">
+                        <img src="https://via.placeholder.com/400x200?text=Physics+Expert" alt="Course">
+                        <span class="badge intermediate">Intermediate</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>Physics Expert Course</h3>
+                        <p class="course-desc">Master physics concepts with real-world applications</p>
+                        <div class="course-stats">
+                            <span><i class="fas fa-film"></i> 32 Videos</span>
+                            <span><i class="fas fa-clock"></i> 24 Hours</span>
+                        </div>
+                        <button class="btn btn-primary btn-full">Enroll Now</button>
+                    </div>
+                </div>
+
+                <div class="course-card animate-on-scroll">
+                    <div class="course-banner">
+                        <img src="https://via.placeholder.com/400x200?text=Chemistry+Pro" alt="Course">
+                        <span class="badge advanced">Advanced</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>Chemistry Professional</h3>
+                        <p class="course-desc">Advanced chemistry topics for competitive exams</p>
+                        <div class="course-stats">
+                            <span><i class="fas fa-film"></i> 28 Videos</span>
+                            <span><i class="fas fa-clock"></i> 20 Hours</span>
+                        </div>
+                        <button class="btn btn-primary btn-full">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Study Universe?</h2>
+                <p>Everything you need for comprehensive learning</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
+                    <h3>HD Video Lectures</h3>
+                    <p>High-quality video content with interactive lessons</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Comprehensive PDFs</h3>
+                    <p>Study materials and books for in-depth learning</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Structured Courses</h3>
+                    <p>Complete courses with progress tracking</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from experienced and qualified educators</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Learn anywhere, anytime on any device</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Certifications</h3>
+                    <p>Earn certificates upon course completion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Learning?</h2>
+            <p>Join thousands of students already learning on Study Universe</p>
+            <button class="btn btn-light btn-large" onclick="window.location.href='/signup'">Start Free Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Universe</h3>
+                    <p>Making quality education accessible to everyone</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/videos">Videos</a></li>
+                        <li><a href="/pdfs">Books & PDFs</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Study Universe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
