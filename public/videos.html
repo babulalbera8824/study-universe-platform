@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Lectures - Study Universe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .videos-page {
+            padding-top: 20px;
+        }
+        
+        .filter-section {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .search-bar {
+            flex: 2;
+            min-width: 250px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .videos-count {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Study Universe</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/videos" class="active">Videos</a></li>
+                <li><a href="/pdfs">Books & PDFs</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#" class="search-icon"><i class="fas fa-search"></i></a></li>
+            </ul>
+
+            <div class="nav-auth">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Sign Up</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container videos-page">
+        <div class="section-header" style="margin-top: 30px; margin-bottom: 40px;">
+            <h1 style="margin-bottom: 10px;">Video Lectures</h1>
+            <p>Learn from comprehensive video lectures on various subjects</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="filterVideos()">
+                </div>
+                <div class="filter-group">
+                    <label for="subjectFilter">Subject</label>
+                    <select id="subjectFilter" onchange="filterVideos()">
+                        <option value="">All Subjects</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                        <option value="history">History</option>
+                        <option value="geography">Geography</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="examFilter">Exam Type</label>
+                    <select id="examFilter" onchange="filterVideos()">
+                        <option value="">All Exams</option>
+                        <option value="jee">JEE</option>
+                        <option value="neet">NEET</option>
+                        <option value="board">Board</option>
+                        <option value="competitive">Competitive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-count">
+            Showing <span id="videoCount">0</span> videos
+        </div>
+
+        <!-- Videos Grid -->
+        <div id="videosGrid" class="videos-grid">
+            <!-- Videos will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Universe</h3>
+                    <p>Making quality education accessible to everyone</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/videos">Videos</a></li>
+                        <li><a href="/pdfs">Books & PDFs</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Study Universe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Sample video data
+        const videos = [
+            {
+                id: 1,
+                title: 'Introduction to Algebra',
+                subject: 'mathematics',
+                exam: 'jee',
+                duration: '45:32',
+                thumbnail: 'https://via.placeholder.com/300x170?text=Mathematics+Basics',
+                views: 1200,
+                rating: 4.8,
+                description: 'Learn the fundamentals of algebra with practical examples'
+            },
+            {
+                id: 2,
+                title: 'Newton\'s Laws of Motion',
+                subject: 'physics',
+                exam: 'jee',
+                duration: '52:15',
+                thumbnail: 'https://via.placeholder.com/300x170?text=Physics+Concepts',
+                views: 2100,
+                rating: 4.9,
+                description: 'Deep dive into classical mechanics principles'
+            },
+            {
+                id: 3,
+                title: 'Chemical Bonding Explained',
+                subject: 'chemistry',
+                exam: 'neet',
+                duration: '38:47',
+                thumbnail: 'https://via.placeholder.com/300x170?text=Chemistry+Reaction',
+                views: 1800,
+                rating: 4.7,
+                description: 'Understand ionic and covalent bonds'
+            },
+            {
+                id: 4,
+                title: 'Cell Biology Fundamentals',
+                subject: 'biology',
+                exam: 'neet',
+                duration: '41:22',
+                thumbnail: 'https://via.placeholder.com/300x170?text=Biology+Cell',
+                views: 2500,
+                rating: 4.8,
+                description: 'Structure and function of plant and animal cells'
+            },
+            {
+                id: 5,
+                title: 'World War History',
+                subject: 'history',
+                exam: 'board',
+                duration: '55:10',
+                thumbnail: 'https://via.placeholder.com/300x170?text=History+Timeline',
+                views: 800,
+                rating: 4.6,
+                description: 'Complete overview of World Wars'
+            },
+            {
+                id: 6,
+                title: 'Geography Fundamentals',
+                subject: 'geography',
+                exam: 'board',
+                duration: '48:30',
+                thumbnail: 'https://via.placeholder.com/300x170?text=Geography+Map',
+                views: 950,
+                rating: 4.7,
+                description: 'Essential geography concepts for all levels'
+            }
+        ];
+
+        function renderVideos(videosToShow) {
+            const grid = document.getElementById('videosGrid');
+            const count = document.getElementById('videoCount');
+            
+            count.textContent = videosToShow.length;
+            
+            if (videosToShow.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--secondary-color);">No videos found. Try adjusting your filters.</p>';
+                return;
+            }
+            
+            grid.innerHTML = videosToShow.map(video => `
+                <div class="video-card animate-on-scroll">
+                    <div class="video-thumbnail">
+                        <img src="${video.thumbnail}" alt="${video.title}">
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                        <span class="duration">${video.duration}</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>${video.title}</h3>
+                        <p class="category">${video.subject.charAt(0).toUpperCase() + video.subject.slice(1)}</p>
+                        <p class="description">${video.description}</p>
+                        <div class="card-footer">
+                            <span class="views"><i class="fas fa-eye"></i> ${video.views}K views</span>
+                            <span class="rating"><i class="fas fa-star"></i> ${video.rating}/5</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterVideos() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const subject = document.getElementById('subjectFilter').value;
+            const exam = document.getElementById('examFilter').value;
+
+            const filtered = videos.filter(video => {
+                const matchesSearch = video.title.toLowerCase().includes(searchTerm) || 
+                                    video.description.toLowerCase().includes(searchTerm);
+                const matchesSubject = !subject || video.subject === subject;
+                const matchesExam = !exam || video.exam === exam;
+                
+                return matchesSearch && matchesSubject && matchesExam;
+            });
+
+            renderVideos(filtered);
+        }
+
+        // Initial render
+        renderVideos(videos);
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & PDFs - Study Universe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pdfs-page {
+            padding-top: 20px;
+        }
+        
+        .filter-section {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .search-bar {
+            flex: 2;
+            min-width: 250px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .pdfs-count {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Study Universe</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/videos">Videos</a></li>
+                <li><a href="/pdfs" class="active">Books & PDFs</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="#" class="search-icon"><i class="fas fa-search"></i></a></li>
+            </ul>
+
+            <div class="nav-auth">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Sign Up</a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container pdfs-page">
+        <div class="section-header" style="margin-top: 30px; margin-bottom: 40px;">
+            <h1 style="margin-bottom: 10px;">Books & Study Materials</h1>
+            <p>Download and read comprehensive study materials</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-controls">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search books..." onkeyup="filterPDFs()">
+                </div>
+                <div class="filter-group">
+                    <label for="subjectFilter">Subject</label>
+                    <select id="subjectFilter" onchange="filterPDFs()">
+                        <option value="">All Subjects</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                        <option value="history">History</option>
+                        <option value="geography">Geography</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="examFilter">Exam Type</label>
+                    <select id="examFilter" onchange="filterPDFs()">
+                        <option value="">All Exams</option>
+                        <option value="jee">JEE</option>
+                        <option value="neet">NEET</option>
+                        <option value="board">Board</option>
+                        <option value="competitive">Competitive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdfs-count">
+            Showing <span id="pdfCount">0</span> books
+        </div>
+
+        <!-- PDFs Grid -->
+        <div id="pdfsGrid" class="books-grid">
+            <!-- PDFs will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Universe</h3>
+                    <p>Making quality education accessible to everyone</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/videos">Videos</a></li>
+                        <li><a href="/pdfs">Books & PDFs</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Study Universe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Sample PDF data
+        const pdfs = [
+            {
+                id: 1,
+                title: 'Complete Math Guide',
+                subject: 'mathematics',
+                exam: 'jee',
+                cover: 'https://via.placeholder.com/220x320?text=Math+Guide',
+                size: '2.5 MB',
+                downloads: 1200,
+                description: 'Comprehensive mathematics guide'
+            },
+            {
+                id: 2,
+                title: 'Physics Comprehensive Notes',
+                subject: 'physics',
+                exam: 'jee',
+                cover: 'https://via.placeholder.com/220x320?text=Physics+Notes',
+                size: '3.8 MB',
+                downloads: 950,
+                description: 'Complete physics study material'
+            },
+            {
+                id: 3,
+                title: 'Chemistry Theory & Practice',
+                subject: 'chemistry',
+                exam: 'neet',
+                cover: 'https://via.placeholder.com/220x320?text=Chemistry+Theory',
+                size: '4.2 MB',
+                downloads: 1100,
+                description: 'Theory and practice problems'
+            },
+            {
+                id: 4,
+                title: 'Biology Essential Textbook',
+                subject: 'biology',
+                exam: 'neet',
+                cover: 'https://via.placeholder.com/220x320?text=Biology+Textbook',
+                size: '5.1 MB',
+                downloads: 1400,
+                description: 'Essential biology concepts'
+            },
+            {
+                id: 5,
+                title: 'History Complete Guide',
+                subject: 'history',
+                exam: 'board',
+                cover: 'https://via.placeholder.com/220x320?text=History+Guide',
+                size: '2.9 MB',
+                downloads: 650,
+                description: 'World and Indian history'
+            },
+            {
+                id: 6,
+                title: 'Geography Study Material',
+                subject: 'geography',
+                exam: 'board',
+                cover: 'https://via.placeholder.com/220x320?text=Geography+Map',
+                size: '3.3 MB',
+                downloads: 750,
+                description: 'Physical and human geography'
+            }
+        ];
+
+        function renderPDFs(pdfsToShow) {
+            const grid = document.getElementById('pdfsGrid');
+            const count = document.getElementById('pdfCount');
+            
+            count.textContent = pdfsToShow.length;
+            
+            if (pdfsToShow.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--secondary-color);">No books found. Try adjusting your filters.</p>';
+                return;
+            }
+            
+            grid.innerHTML = pdfsToShow.map(pdf => `
+                <div class="book-card animate-on-scroll">
+                    <div class="book-cover">
+                        <img src="${pdf.cover}" alt="${pdf.title}">
+                    </div>
+                    <h3>${pdf.title}</h3>
+                    <p class="subject">${pdf.subject.charAt(0).toUpperCase() + pdf.subject.slice(1)}</p>
+                    <p class="size">📄 ${pdf.size}</p>
+                    <div class="book-actions">
+                        <button class="btn btn-sm btn-primary" onclick="alert('PDF viewer coming soon!')">Read</button>
+                        <button class="btn btn-sm btn-outline" onclick="alert('Download feature coming soon!')"><i class="fas fa-download"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterPDFs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const subject = document.getElementById('subjectFilter').value;
+            const exam = document.getElementById('examFilter').value;
+
+            const filtered = pdfs.filter(pdf => {
+                const matchesSearch = pdf.title.toLowerCase().includes(searchTerm) || 
+                                    pdf.description.toLowerCase().includes(searchTerm);
+                const matchesSubject = !subject || pdf.subject === subject;
+                const matchesExam = !exam || pdf.exam === exam;
+                
+                return matchesSearch && matchesSubject && matchesExam;
+            });
+
+            renderPDFs(filtered);
+        }
+
+        // Initial render
+        renderPDFs(pdfs);
+    </script>
+</body>
+</html>
